@@ -15,8 +15,8 @@ cd /opt/docker/goplugin
 
 echo -e "\n\n################# getting plugin github Repository #################\n\n"
 
-git clone -b docker_branch_v1 https://github.com/GoPlugin/plugin-deployment.git && cd plugin-deployment
+sudo git clone -b docker_branch_v1 https://github.com/GoPlugin/plugin-deployment.git && cd plugin-deployment
 
 echo -e "\n\n################# getting nmzn´s docker-compose github Repository #################\n\n"
 
-git clone https://github.com/nmzn/pluginnode-docker.git
+sudo git clone https://github.com/nmzn/pluginnode-docker.git
