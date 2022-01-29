@@ -19,20 +19,15 @@ Contents:
       
       cd # to be sure you run it from the correct directory
       
-      sudo git clone https://github.com/nmzn/pluginnode-install.git && cd pluginnode-install
+      sudo git clone https://github.com/nmzn/pluginnode-install.git && cd pluginnode-install && sudo chmod +x install_node.sh && sudo chmod +x install_node.sh
       
-      sudo chmod +x install_docker.sh (optional)
-      sudo chmod +x install_node.sh
   
-  Step 2:
+  Step 2 (optional if needed):
+      
+          ./install_docker.sh
   
-      ./install_node
-          
-          sudo chmod +x install_docker.sh (optional)
-          sudo chmod +x install_node.sh
-      
-      Step 2:
-      
+  Step 3:
+  
           ./install_node.sh
           
     
