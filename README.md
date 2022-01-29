@@ -10,7 +10,19 @@ Contents:
   
       This ist the main Install Script that will install the plugin Node including the external initiator.
       
-      Step 1:
+    
+  Step 1:
+      
+      cd # to be sure you run it from the correct directory
+      
+      sudo git clone https://github.com/nmzn/pluginnode-install.git
+      
+      sudo chmod +x install_docker.sh (optional)
+      sudo chmod +x install_node.sh
+  
+  Step 2:
+  
+      ./install_node
           
           sudo chmod +x install_docker.sh (optional)
           sudo chmod +x install_node.sh
