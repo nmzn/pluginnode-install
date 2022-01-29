@@ -17,7 +17,7 @@ Contents:
       
       cd # to be sure you run it from the correct directory
       
-      sudo git clone https://github.com/nmzn/pluginnode-install.git && cd ..
+      sudo git clone https://github.com/nmzn/pluginnode-install.git && cd pluginnode-install
       
       sudo chmod +x install_docker.sh (optional)
       sudo chmod +x install_node.sh
