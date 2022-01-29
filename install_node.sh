@@ -1,10 +1,11 @@
 ##Install Script for plugin nodes via Docker.
-cd
+
 echo -e "\n\n## Plugin Docker Install -- https://goplugin.co -- made by nmzn (Twitter @itsnmzn) 01/2022\n"
 echo -e "\n\n## Please make sure to read the readme.md after installing!!!"
 echo -e "## Version 0.1 \n\n"
 echo -e "\n\n################# Updating System #################\n\n"
 
+cd
 sudo apt update && sudo apt upgrade -y
 
 echo -e "\n\n################# Changing Directory #################\n\n"
