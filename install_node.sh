@@ -142,7 +142,7 @@ sudo docker exec -it plinode /bin/bash -c ". ~/.profile && plugin admin login -f
 JOBKEYS=$(sudo docker exec -it plinode /bin/bash -c ". ~/.profile && plugin initiators create pluginei http://localhost:8080/jobs" | grep pluginei)
 sudo sh -c "echo $JOBKEYS > eivar.env"
 
-ICACCESSKEY=$(echo $JOBKEYS | sed 's/\ //g' | awk -F"║" '{print $4};')ca
+ICACCESSKEY=$(echo $JOBKEYS | sed 's/\ //g' | awk -F"║" '{print $4};')
 ICSECRET=$(echo $JOBKEYS | sed 's/\ //g' | awk -F"║" '{print $5};')
 CIACCESSKEY=$(echo $JOBKEYS | sed 's/\ //g' | awk -F"║" '{print $6};')
 CISECRET=$(echo $JOBKEYS | sed 's/\ //g' | awk -F"║" '{print $7};')
