@@ -1,5 +1,7 @@
 # pluginnode-install
 
+The install Script hasnt a password check yet. Will include that in later updates.
+
 Contents:
 
   ##install_docker.sh
