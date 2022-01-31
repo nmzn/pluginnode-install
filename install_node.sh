@@ -25,80 +25,124 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 echo -e "\n\n################# Changing Credentials #################\n\n"
 
-echo -e "Node Login"
-echo
-echo -e "Please insert your Credentials for your Node Login Password must be 8-50 characters!\n"
-  read -p "Mailadress: " mail
-echo
-  read -s -p "Password: " password
-echo
-  read -s -p "Confirm: " password2
-echo
+#### Node Login Credentials ###
 
-while [ "$password" != "$password2" ];
-do
+     echo -e "Please type an Email adress to login to your node. Doesnt need to be related to the plugin login."
+     echo
+     until [[ "$mail" =~ ^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$ ]]
+     do
+     echo
+     read -p "Enter a valid Mail adress: " mail
+     done
+     echo
+     echo "Mail adress is valid."
+     echo
+
+while true; do
+    echo "Please type a Password for your node login. (At least 7 characters with 2 upper case characters, 2 lower case characters, 2 digits and 1 special character."
     echo
-    echo "Passwords dont match. Please try again!\n"
+    read -s -p "Enter Password: "  nodepw
     echo
-    read -s -p "Password: " password
     echo
-    read -s -p "Confirm: " password2
+
+    FAIL=no
+
+    # 8 characters
+    [[ ${#nodepw} -ge 7 ]] || FAIL=yes
+
+    # 2 upper case letters
+    echo $nodepw | grep -q "[A-Z].*[A-Z]" || FAIL=yes
+
+    # 2 lower case letters
+    echo $nodepw | grep -q "[a-z].*[a-z]" || FAIL=yes
+
+    # 2 digits
+    echo $nodepw | grep -q "[0-9].*[0-9]" || FAIL=yes
+
+    # 1 non-alphanumeric character (no spaces)
+    echo $nodepw | grep -q "[^a-zA-Z0-9]" || FAIL=yes
+
+    [[ ${FAIL} == "no" ]] && break
+
+    echo "Password invalid"
     echo
 done
 
-echo
-echo -e "Postgres Database Password"
-echo
-echo -e "Please type your Postgres Password.\n"
-  read -s -p "Password: " pst
-echo
-  read -s -p "Confirm: " pst2
-echo
+echo "Node Password is valid"
 echo
 
-while [ "$pst" != "$pst2" ];
-do
+### Postgres Password ###
+
+
+while true; do
+    echo "Please type a Password for your Postgres Database. At least 4 characters with 1 Upper case, 1 lower case character and 1 digit. No Special Characters!"
     echo
-    echo "Passwords dont match. Please try again!\n"
+    read -s -p "Enter Password: " pgrspw
     echo
-    read -s -p "Password: " pst
     echo
-    read -s -p "Confirm: " pst2
+
+    FAIL=no
+
+    # 4 characters
+    [[ ${#pgrspw} -ge 3 ]] || FAIL=yes
+
+    # 1 upper case letters
+    echo $pgrspw | grep -q "[A-Z]" || FAIL=yes
+
+    # 1 lower case letters
+    echo $pgrspw | grep -q "[a-z]" || FAIL=yes
+
+    # 1 digits
+    echo $pgrspw | grep -q "[0-9]" || FAIL=yes
+
+    [[ ${FAIL} == "no" ]] && break
+
+    echo "Postgres Password invalid"
     echo
 done
 
-echo -e "Keystore Password"
-echo
-echo -e "Please enter a Keystore Password now!\n"
-echo
-echo -e "  *** KEYSTORE PASSWORD SHOULD FOLLOW THIS CONDITIONS ***"
-echo -e "   must be longer than 12 characters"
-echo -e "   must contain at least 3 lowercase characters"
-echo -e "   must contain at least 3 uppercase characters"
-echo -e "   must contain at least 3 numbers"
-echo -e "   must contain at least 3 symbols"
-echo -e "   must not contain more than 3 identical consecutive characters"
-echo
-read -s -p "Keystore Password: " kst
-echo
-read -s -p "Confirm Keystore: " kst2
+echo "Postgres Password is valid"
 echo
 
-while [ "$kst" != "$kst2" ];
-do
+### Keystore Password ###
+
+while true; do
+    echo "Password must be LONGER than 12 characters contain at least 3 upper case characters, 3 lower case characters, 3 numbers and 3 special characters (no spaces)"
     echo
-    echo "Keystore Password doesnt match. Please try again!"
+    read -s -p "Enter Password: " kstpw
     echo
-    read -s -p "Password: " kst
     echo
-    read -s -p "Confirm: " kst2
+
+    FAIL=no
+
+    # 12 characters
+    [[ ${#kstpw} -ge 12 ]] || FAIL=yes
+
+    # 3 upper case letters
+    echo $kstpw | grep -q "[A-Z].*[A-Z].*[A-Z]" || FAIL=yes
+
+    # 3 lower case letters
+    echo $kstpw | grep -q "[a-z].*[a-z].*[a-z]" || FAIL=yes
+
+    # 3 digits
+    echo $kstpw | grep -q "[0-9].*[0-9].*[0-9]" || FAIL=yes
+
+    # 3 non-alphanumeric character (no spaces)
+    echo $kstpw | grep -q "[^a-zA-Z0-9].*[^a-zA-Z0-9].*[^a-zA-Z0-9]" || FAIL=yes
+
+    [[ ${FAIL} == "no" ]] && break
+
+    echo "Password invalid"
     echo
 done
+
+echo "Keystore Password is valid"
+echo
 
 echo -e "\nSetting Postgres Password"
 
-sudo sed -i "s/plugin1234/$pst2/g"  plugin.env ei.env
-sudo sed -i "s/plugin1234/$pst2/g"  docker-compose.yaml
+sudo sed -i "s/plugin1234/$pgrspw/g"  plugin.env ei.env
+sudo sed -i "s/plugin1234/$pgrspw/g"  docker-compose.yaml
 sudo sed -i "s/\postgres\b/dbuser/g" plugin.env
 sudo sed -i "s/\postgres\b/dbuser/g" ei.env
 sudo sed -i "s|"172.17.0.1"|psql_node|g" plugin.env
@@ -113,7 +157,7 @@ sudo sed -i d .env.apicred
 sudo sh -c 'echo "mail@mail.com" > .env.apicred'
 sudo sh -c 'echo "mailpw" >> .env.apicred'
 sudo sed -i "s/mail\@mail.com/$mail/g" .env.apicred
-sudo sed -i "s/mailpw/$password2/g" .env.apicred
+sudo sed -i "s/mailpw/$nodepw/g" .env.apicred
 echo
 echo -e "Done..."
 
@@ -121,7 +165,7 @@ echo -e "\nSetting Keystore Password"
 
 sudo sed -i d .env.password
 sudo sh -c 'echo "keystore" > .env.password'
-sudo sed -i "s/keystore/$kst2/g" .env.password
+sudo sed -i "s/keystore/$kstpw/g" .env.password
 echo
 echo -e "Done..."
 
