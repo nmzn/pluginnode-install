@@ -28,7 +28,7 @@ echo -e "\n\n################# Changing Credentials #################\n\n"
 echo -e "Node Login"
 echo
 echo -e "Please insert your Credentials for your Node Login Password must be 8-50 characters!\n"
-  read -p "Mailadress: " mail
+  read -p "Mailaddress: " mail
 echo
   read -s -p "Password: " password
 echo
