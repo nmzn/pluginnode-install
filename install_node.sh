@@ -84,7 +84,7 @@ while true; do
     FAIL=no
 
     # 4 characters
-    [[ ${#pgrspw} -ge 3 ]] || FAIL=yes
+    [[ ${#pgrspw} -ge 4 ]] || FAIL=yes
 
     # 1 upper case letters
     echo $pgrspw | grep -q "[A-Z]" || FAIL=yes
