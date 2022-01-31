@@ -47,7 +47,7 @@ while true; do
 
     FAIL=no
 
-    # 8 characters
+    # 7 characters
     [[ ${#nodepw} -ge 7 ]] || FAIL=yes
 
     # 2 upper case letters
