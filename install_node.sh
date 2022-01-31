@@ -117,7 +117,7 @@ while true; do
     FAIL=no
 
     # 12 characters
-    [[ ${#kstpw} -ge 12 ]] || FAIL=yes
+    [[ ${#kstpw} -ge 13 ]] || FAIL=yes
 
     # 3 upper case letters
     echo $kstpw | grep -q "[A-Z].*[A-Z].*[A-Z]" || FAIL=yes
