@@ -25,7 +25,7 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 
 echo -e "\n\n################# Changing Credentials #################\n\n"
-
+echo
 #### Node Login Credentials ###
 
      echo -e "Please type an Email adress to login to your node. Doesnt need to be related to the plugin login."
@@ -38,7 +38,7 @@ echo -e "\n\n################# Changing Credentials #################\n\n"
      echo
      echo "Mail adress is valid."
      echo
-
+echo
 while true; do
     echo "Please type a Password for your node login. (At least 7 characters with 2 upper case characters, 2 lower case characters, 2 digits and 1 special character."
     echo
@@ -73,8 +73,7 @@ echo "Node Password is valid"
 echo
 
 ### Postgres Password ###
-
-
+echo
 while true; do
     echo "Please type a Password for your Postgres Database. At least 4 characters with 1 Upper case, 1 lower case character and 1 digit. No Special Characters!"
     echo
@@ -106,8 +105,9 @@ echo "Postgres Password is valid"
 echo
 
 ### Keystore Password ###
-
+echo
 while true; do
+    echo "Please type your Keystore Password."
     echo "Password must be LONGER than 12 characters contain at least 3 upper case characters, 3 lower case characters, 3 numbers and 3 special characters (no spaces)"
     echo
     read -s -p "Enter Password: " kstpw
