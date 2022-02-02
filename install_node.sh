@@ -170,6 +170,11 @@ sudo sed -i "s/keystore/$kstpw/g" .env.password
 echo
 echo -e "Done..."
 
+unset $mail
+unset $nodepw
+unset $pgrspw
+unset $kstpw
+
 echo -e "\n\n################# Bringing up node & database #################\n\n"
 
 sudo docker-compose up -d
