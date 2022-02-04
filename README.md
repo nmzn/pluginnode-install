@@ -8,7 +8,7 @@ Contents:
 
   ##install_docker.sh
 
-      Thist is a small Script that installs docker for you.
+      This is a small Script that installs docker for you.
   
   ##install_node.sh
   
@@ -17,8 +17,7 @@ Contents:
     
   Step 1:
       
-      cd # to be sure you run it from the correct directory
-      
+          
       sudo git clone https://github.com/nmzn/pluginnode-install.git && cd pluginnode-install && sudo chmod +x install_docker.sh && sudo chmod +x install_node.sh
       
   
