@@ -170,11 +170,6 @@ sudo sed -i "s/keystore/$kstpw/g" .env.password
 echo
 echo -e "Done..."
 
-unset $mail
-unset $nodepw
-unset $pgrspw
-unset $kstpw
-
 echo -e "\n\n################# Bringing up node & database #################\n\n"
 
 sudo docker-compose up -d
@@ -202,11 +197,6 @@ sudo sed -i "s|"cc763c8ca9fe48508883f6d39f818ccf"|$ICACCESSKEY|g" ei.env
 sudo sed -i "s|"jEG8wzejfexfjAeZWBy8SzS7XV+SfV22j0eq7CEnyc6SSsd35PtQlESP2RhYs1am"|$ICSECRET|g" ei.env
 sudo sed -i "s|"pKgKE+XNYbU2FRX207LObetsCx56bGPXenU3XpUelAdRb73bXBE22tSLjPviRUav"|$CIACCESSKEY|g" ei.env
 sudo sed -i "s|"FXllNVlkD8ADVjFr46teIGRaeWEZXsYVQRMdfmu+UmRV4aysZ30E/OkNadysLZsA"|$CISECRET|g" ei.env
-
-unset $ICACCESSKEY
-unset $ICSECRET
-unset $CIACCESSKEY
-unset $CISECRET
 
 sudo docker exec --env-file ei.env -it plinode /bin/bash -c ". ~/.profile && pm2 start /pluginAdm/startEI.sh"
 
