@@ -2,6 +2,8 @@
 
 # Please take note that the "./install_node.sh" does not include the docker installation. If you have no Docker installed on your VPS you need to run the "./install_docker.sh" first
 
+Guide on how to deploy Contracts: https://github.com/nmzn/deployment-guide
+
 The install Script hasnt a password check yet. Will include that in later updates.
 
 Contents:
